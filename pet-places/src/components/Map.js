@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Marker from  "../assets/marker.jpg"
+const MarkerImg = ({ src }) => <div>{src}</div>;
 
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Map extends Component {
 
@@ -42,6 +42,7 @@ geoFailure = (err) => {
     },
     zoom: 11
   };
+  
 
   render() {
     
@@ -52,10 +53,13 @@ geoFailure = (err) => {
           defaultCenter={this.state.where}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
+          <MarkerImg
             lat={this.state.where.lat}
             lng={this.state.where.lng}
-            text="My Marker"
+            src={Marker}
+            style={{width:"20px", height:"20px"}}
+            alt="Marker"
+            
           />
         </GoogleMapReact>
       </div>
