@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Marker from  "../assets/marker.jpg"
-const MarkerImg = ({ src }) => <div>{src}</div>;
+import Marker from './Marker';
+// const MarkerImg = ({ src }) => <div>{src}</div>;
 
 
 class Map extends Component {
@@ -46,20 +46,25 @@ geoFailure = (err) => {
 
   render() {
     
+    const markers = [
+      {
+        lat: this.state.where.lat,
+        lng: this.state.where.lng
+      }
+    ]
+
     return (
       <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
+        <GoogleMapReact markers={markers}
           bootstrapURLKeys={{ key: "AIzaSyAkKwg820hYfSV54pK4oI_xDk5OARvZLO4" }}
           defaultCenter={this.state.where}
           defaultZoom={this.props.zoom}
         >
-          <MarkerImg
+          <Marker
             lat={this.state.where.lat}
             lng={this.state.where.lng}
-            src={Marker}
-            style={{width:"20px", height:"20px"}}
-            alt="Marker"
-            
+            name="My Marker"
+            color="blue"
           />
         </GoogleMapReact>
       </div>
