@@ -9,11 +9,20 @@ class Places extends Component {
             venues: [],
             currentLatitude: null,
             currentLongitude: null,
+            name: "Pet Store"
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState);
+        console.log(this.state);
+        if(prevState.name !== this.state.name) {
+            this.getVenues()
         }
     }
 
     componentDidMount() {
-        this.getLocation()      
+        this.getLocation()
     }
 
     getLocation = () => {
@@ -30,8 +39,6 @@ class Places extends Component {
             currentLongitude: position.coords.longitude
         })
         this.getVenues()
-        console.log(position.coords.latitude, position.coords.longitude)
-        console.log(this.state.currentLatitude, this .state.currentLongitude)
     }
 
     renderMap = () => {
@@ -41,11 +48,11 @@ class Places extends Component {
 
     getVenues = () => {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
-        console.log(this.state.currentLatitude, this .state.currentLongitude)
+        console.log(this.state.currentLatitude, this.state.currentLongitude)
         const parameters = {
             client_id: "2CRZZD5FOPN5H2MVPJ0QVKDZAEB2MR2GBCNVMPZYYGLDIWQ4",
             client_secret: "QPBZMCQRUFUXARBB131TS12OXAEP4K1PFKUIBXJO0IS13ZEN",
-            query: "Pet Store, Pet Service",
+            query: this.state.name,
             ll: (`${this.state.currentLatitude},${this.state.currentLongitude}`),
             v: "20200528"
         }
@@ -88,9 +95,35 @@ class Places extends Component {
         })
     }
 
+    handleDropDownChange = name => {
+        console.log(name);
+        // const { name, value } = event.target;
+        this.setState({
+          name: name
+        });
+        console.log(name)
+        // this.getVenues()
+      };
+
     render() {
         return (
-            <div id="map"></div>
+            <div>
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Find Your Pet Place: {this.state.name}</button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Store")} >Pet Store</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Animal Shelter")} >Animal Shelter</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Service")} >Pet Service</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Café")} >Pet Café</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Dog Run")} >Dog Run</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Veterinarian")} >Veterinarian</li>
+                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Park")} >Park</li>
+                    </ul>
+                    <div><br /></div>
+                </div>
+                <div id="map"></div>
+            </div>
         )
     }
 }
