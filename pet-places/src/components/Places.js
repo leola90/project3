@@ -10,12 +10,10 @@ class Places extends Component {
             currentLatitude: null,
             currentLongitude: null,
         }
-        // this.geolocation = window.geolocation.bind(this)
     }
 
     componentDidMount() {
-        this.getVenues()
-        this.getLocation()
+        this.getLocation()      
     }
 
     getLocation = () => {
@@ -31,8 +29,9 @@ class Places extends Component {
             currentLatitude: position.coords.latitude,
             currentLongitude: position.coords.longitude
         })
+        this.getVenues()
         console.log(position.coords.latitude, position.coords.longitude)
-
+        console.log(this.state.currentLatitude, this .state.currentLongitude)
     }
 
     renderMap = () => {
@@ -42,12 +41,12 @@ class Places extends Component {
 
     getVenues = () => {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
+        console.log(this.state.currentLatitude, this .state.currentLongitude)
         const parameters = {
             client_id: "2CRZZD5FOPN5H2MVPJ0QVKDZAEB2MR2GBCNVMPZYYGLDIWQ4",
             client_secret: "QPBZMCQRUFUXARBB131TS12OXAEP4K1PFKUIBXJO0IS13ZEN",
             query: "Pet Store, Pet Service",
-            ll: ("29.733683199999998,-95.44663039999999"),
-            // ll: (this.state.currentLatitude, this.state.currentLongitude),
+            ll: (`${this.state.currentLatitude},${this.state.currentLongitude}`),
             v: "20200528"
         }
 
@@ -65,7 +64,7 @@ class Places extends Component {
 
     initMap = () => {
         var map = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: 29.7604, lng: -95.3698 },
+            center: { lat: this.state.currentLatitude, lng: this.state.currentLongitude },
             zoom: 12
         });
 
@@ -86,9 +85,7 @@ class Places extends Component {
                 infowindow.setContent(contentString)
                 infowindow.open(map, marker);
             });
-
         })
-
     }
 
     render() {
@@ -96,18 +93,15 @@ class Places extends Component {
             <div id="map"></div>
         )
     }
-
 }
 
 function loadScript(url) {
-
     var index = window.document.getElementsByTagName("script")[0]
     var script = window.document.createElement("script")
     script.src = url
     script.async = true
     script.defer = true
     index.parentNode.insertBefore(script, index)
-
 }
 
 export default Places;
