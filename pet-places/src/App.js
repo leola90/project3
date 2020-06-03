@@ -4,12 +4,16 @@ import Places from "./components/Places"
 const App = () => {
 
   return (
-    <div style={{ width: 400, height: 600 }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "600px"
+      }}>
+
       < Places />
     </div>
   )
 }
-
 
 export default App
 
