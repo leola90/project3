@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const logger = require('morgan');
-
 const passport = require("./passport");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/api/users");
