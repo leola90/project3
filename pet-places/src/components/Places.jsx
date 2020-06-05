@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "../assets/places.css"
+import "../assets/Places.css"
 import axios from "axios"
 import SearchLocationInput from "./SearchLocationInput"
 
