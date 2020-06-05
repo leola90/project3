@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Member from "./pages/Member";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import PetContainer from "./components/PetContainer";
+import PetSearch from "./components/PetSearch";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,11 +12,12 @@ function App() {
     <Router>
       <div>
         <h1>This is the app page</h1>
-        <PetContainer />
+        {/* <PetContainer /> */}
         <Route exact path="/" component={Login} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Register" component={Register} />
         <Route exact path="/Member" component={Member} />
+        <Route exact path="/PetSearch" component={PetSearch} />
       </div>
     </Router>
   );
@@ -24,24 +25,24 @@ function App() {
 }
 
 export default App;
-=======
-import Places from "./components/Places"
+// =======
+// import Places from "./components/Places"
 
-const App = () => {
+// const App = () => {
 
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "600px"
-      }}>
+//   return (
+//     <div
+//       style={{
+//         width: "100vw",
+//         height: "600px"
+//       }}>
 
-      < Places />
-    </div>
-  )
-}
+//       < Places />
+//     </div>
+//   )
+// }
 
-export default App
+// export default App
 
 
 
