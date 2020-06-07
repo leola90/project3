@@ -1,36 +1,38 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Container from 'react-bootstrap/Container';
+import Col  from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 function PetDetail(props) {
   return (
     <div>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" alt={props.name} src={props.image}  />  
-      {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
-      <Card.Body>
-        <Card.Title>Description</Card.Title>
-        <Card.Text>
-          {props.description}
-    </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroupItem>Gender: {props.gender}</ListGroupItem>
-        <ListGroupItem>Status: {props.status}</ListGroupItem>
-        <ListGroupItem>ID: {props.id}</ListGroupItem>
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </Card>
+      <Container>
+        <Row>
+          <Col> 
+          <button onClick={props.likeButton} className="btn btn-success">Like</button>
+          </Col>
+          <Col>
+            <Card >
+              <Card.Img alt={props.name} style={{ width: "100%" }} src={props.image} />
+              <Card.Body>
+                <Card.Title>{props.name}</Card.Title>
+                {/* <Card.Text>{props.description}</Card.Text> */}
+                <Card.Text>Gender: {props.gender}</Card.Text>
+                <Card.Text>Status: {props.status}</Card.Text>
+                <Card.Text>ID: {props.id}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+          {/* <button onClick={props.likeButton} className="btn btn-danger">Dislike</button> */}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
 
 export default PetDetail;
-
-
-

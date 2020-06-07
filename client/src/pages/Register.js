@@ -34,7 +34,7 @@ class Register extends Component {
            } 
         })
         .then( res => {
-            this.props.history.push("./App");
+            this.props.history.push("./Member");
         })
         .catch (err => {
             console.log(err.data)

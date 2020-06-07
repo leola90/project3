@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require("../../passport");
+const postsController = require("../../controllers/postsController");
 
 //Post route for signup
 router.post("/signup", (req, res, next) => {
@@ -10,7 +11,15 @@ router.post("/signup", (req, res, next) => {
       });
     }
 
-    return res.json(user);
+    req.login(user, function( error) {
+      if (error) {
+        return res.status(500).json({ 
+          message: error || "oops, something happened",
+        });
+      }
+
+      return res.json(user);
+    });
   })(req, res, next); 
 });
 
@@ -23,9 +32,18 @@ router.post("/login", function(req, res, next) {
       });
     }
 
-    return res.json(user);
+    req.login(user, function( error) {
+      if (error) {
+        return res.status(500).json({ 
+          message: error || "oops, something happened",
+        });
+      }
+
+      return res.json(user);
+    });
   })(req, res, next); 
 });
+
 
 
 module.exports = router;
