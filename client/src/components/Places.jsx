@@ -182,6 +182,12 @@ class Places extends Component {
           };
         return (
             <div>
+                <div
+      style={{
+        width: "100vw",
+        height: "600px"
+      }}>
+
                 <div className="dropdown">
                     <button style={divStyle} className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Find Your Pet Place: {this.state.name}</button>
@@ -204,6 +210,7 @@ class Places extends Component {
                     <div><br /></div>
                 </div>
                 <div id="map"></div>
+            </div>
             </div>
         )
     }

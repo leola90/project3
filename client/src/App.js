@@ -4,6 +4,7 @@ import Member from "./pages/Member";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PetContainer from "./components/PetContainer";
+import Places from "./components/Places"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Register" component={Register} />
         <Route exact path="/Member" component={Member} />
+        <Route exact path="/Places" component={Places} />
       </div>
     </Router>
   );
@@ -24,24 +26,7 @@ function App() {
 }
 
 export default App;
-=======
-import Places from "./components/Places"
 
-const App = () => {
-
-  return (
-    <div
-      style={{
-        width: "100vw",
-        height: "600px"
-      }}>
-
-      < Places />
-    </div>
-  )
-}
-
-export default App
 
 
 
