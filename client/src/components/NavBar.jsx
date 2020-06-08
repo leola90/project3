@@ -13,11 +13,11 @@ const NavBar = () => {
     return (
 
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Pet Buddy</Navbar.Brand>
+            <Navbar.Brand as ={Link} to={"/Member"}>Pet Buddy</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link as ={Link} to={"/Member"}>Home</Nav.Link>
+                    <Nav.Link as ={Link} to={"/Member"}>Your Profile</Nav.Link>
                     <Nav.Link as ={Link} to={"/Places"}>Places</Nav.Link>
                     <Nav.Link as ={Link} to={"/Facts"}>Pet Facts</Nav.Link>
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

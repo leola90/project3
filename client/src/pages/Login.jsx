@@ -86,7 +86,7 @@ class Login extends Component {
                                 Sign-In</button>
                             </form>
                             <br />
-                            <p>Or sign up <a href="/">here</a></p>
+                            <p>Or sign up <a href="/Register">here</a></p>
                         </div>
                         <div className="col-md-3"></div>
                     </div>
