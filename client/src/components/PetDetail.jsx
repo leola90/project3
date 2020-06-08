@@ -27,12 +27,13 @@ function PetDetail(props) {
           header={<div>
             <CardTitle image={props.image} style={{ margin: "0 auto", width: "250px", height: "250px" }} reveal waves="light">
             </CardTitle>
-            <div>{(props.type === "Cat") ? <img src={cat}/> : (props.type === "Dog") ? <img src={dog}/> : (props.type === "Bird") ? <img src={bird}/> : (props.type === "Horse") ? <img src={horse}/> : (props.type === "Rabbit") ? <img src={rabbit}/> : "Miscellaneous"} 
-                 <span style={{ marginLeft: "15px", fontSize: "16px", fontWeight: "bold"}}>{props.breeds.primary}</span>
-                 <span style={{ marginLeft: "15px", fontSize: "16px", fontWeight: "bold"}}>Mixed: {(props.breeds.mixed === false) ? "False" : "True"}</span> 
+            <div style={{ textAlign: "Center"}} >
+                {(props.type === "Cat") ? <img src={cat}/> : (props.type === "Dog") ? <img src={dog}/> : (props.type === "Bird") ? <img src={bird}/> : (props.type === "Horse") ? <img src={horse}/> : (props.type === "Rabbit") ? <img src={rabbit}/> : "Miscellaneous"} 
+                 <span style={{ fontSize: "16px", fontWeight: "bold"}}>"{props.breeds.primary}</span>
+                 <span style={{ marginLeft: "15px", fontSize: "16px", fontWeight: "bold"}}>Mixed: {(props.breeds.mixed === false) ? "No" : "Yes"}"</span> 
             </div>
             <Button className={"btn-floating waves-effect waves-light red"} style={{ marginLeft: "304px" }}>
-              {<Icon className="favoriteIcon">star_border</Icon>}
+              <Icon center>star_border</Icon>
             </Button>
           </div>}
           reveal={<p><h6>Status: {props.status.charAt(0).toUpperCase() + props.status.slice(1)}</h6><br></br>{props.description}<br></br>{props.address}</p>}

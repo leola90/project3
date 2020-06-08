@@ -162,7 +162,7 @@ class PetSearch extends Component {
           paddingTop: 8,
           paddingBottom: 8,
           paddingLeft: 16
-        }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search for a Cat, Dog, Bird or Horse..." />
+        }} onChange={this.searchChangeHandler.bind(this)} placeholder="Search for a Cat, Dog, Bird, Rabbit or Horse..." />
 
         <input style={{
           fontSize: 24,
