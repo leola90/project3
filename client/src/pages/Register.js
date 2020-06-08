@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import NavBar from "../components/NavBar"
 
 class Register extends Component {
     state = {
@@ -22,23 +23,23 @@ class Register extends Component {
     handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
-        const { username, email, password} = this.state;
+        const { username, email, password } = this.state;
 
         axios({
-           url: "/auth/signup",
-           method: "POST",
-           data: {
-               username,
-               email,
-               password
-           } 
+            url: "/auth/signup",
+            method: "POST",
+            data: {
+                username,
+                email,
+                password
+            }
         })
-        .then( res => {
-            this.props.history.push("./App");
-        })
-        .catch (err => {
-            console.log(err.data)
-        });
+            .then(res => {
+                this.props.history.push("./App");
+            })
+            .catch(err => {
+                console.log(err.data)
+            });
 
         this.setState({
             username: "",
@@ -49,33 +50,105 @@ class Register extends Component {
 
     render() {
         return (
+
+
             <div>
-                <h1>This is the Register Page</h1>
-                <form className="form">
-                    <input
-                        value={this.state.username}
-                        name="username"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="username"
-                    />
-                    <input
-                        value={this.state.email}
-                        name="email"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="email"
-                    />
-                    <input
-                        value={this.state.password}
-                        name="password"
-                        onChange={this.handleInputChange}
-                        type="password"
-                        placeholder="Password"
-                    />
-                    <button onClick={this.handleFormSubmit}>Submit</button>
-                </form>
+                <div><br />    <br />    <br /></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-3"></div>
+                        <div className="col-md-6" style={{ backgroundColor: "whitesmoke" }} >
+                            {/* <img className="centralize" src="" className="logo" alt="Logo" /> */}
+                            <h1 style={{ textAlign: "center" }}>   Welcome to Pet Buddy</h1>
+                            <h3 style={{ textAlign: "center" }}>Find your pet buddy today.</h3>
+                            <h3 style={{ textAlign: "center" }}>Sign Up Now & Have Fun!</h3>
+                            <br />
+                            <br />
+                            <form className="form form-group" style={{ textAlign: "center", display: "inlineBlock" }}>
+                                <form className="form">
+                                    <br />
+                                    <br />
+                                    <input
+                                        value={this.state.username}
+                                        name="username"
+                                        onChange={this.handleInputChange}
+                                        type="text"
+                                        placeholder="username"
+                                        className="form-control-lg"
+                                        style={{ width: "90%" }}
+                                    />
+                                    <br />
+                                    <br />
+                                    <input
+                                        value={this.state.email}
+                                        name="email"
+                                        onChange={this.handleInputChange}
+                                        type="text"
+                                        placeholder="email"
+                                        className="form-control-lg"
+                                        style={{ width: "90%" }}
+                                    />
+                                    <br />
+                                    <br />
+                                    <input
+                                        value={this.state.password}
+                                        name="password"
+                                        onChange={this.handleInputChange}
+                                        type="password"
+                                        placeholder="Password"
+                                        className="form-control-lg"
+                                        style={{ width: "90%" }}
+                                    />
+                                    <br />
+                                    <br />
+                                    <button
+                                        onClick={this.handleFormSubmit}
+                                        className="btn btn-success"
+                                        style={{ width: "50%" }}
+                                    >
+                                        Submit</button>
+                                </form>
+                            </form>
+                            <br />
+                            <p>Already a member? Login <a href="/">here</a></p>
+                        </div>
+                        <div className="col-md-3"></div>
+                    </div>
+                </div>
             </div>
+
+
+
+
+
+
+            // <div>
+            //     <h1>This is the Register Page</h1>
+            //     <form className="form">
+            //         <input
+            //             value={this.state.username}
+            //             name="username"
+            //             onChange={this.handleInputChange}
+            //             type="text"
+            //             placeholder="username"
+            //         />
+            //         <input
+            //             value={this.state.email}
+            //             name="email"
+            //             onChange={this.handleInputChange}
+            //             type="text"
+            //             placeholder="email"
+            //         />
+            //         <input
+            //             value={this.state.password}
+            //             name="password"
+            //             onChange={this.handleInputChange}
+            //             type="password"
+            //             placeholder="Password"
+            //         />
+            //         <button onClick={this.handleFormSubmit}>Submit</button>
+            //     </form>
+            // </div>
         )
     }
 }

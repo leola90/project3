@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "../assets/Places.css"
 import axios from "axios"
 import SearchLocationInput from "./SearchLocationInput"
+import NavBar from "./NavBar"
 
 class Places extends Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class Places extends Component {
 
     componentDidMount() {
         this.getLocation()
+
     }
 
     getLocation = () => {
@@ -178,40 +180,53 @@ class Places extends Component {
         var divStyle = {
             marginTop: "3vh",
             marginLeft: "30px",
-            width: "20%"
-          };
+            width: "80%"
+        };
         return (
             <div>
-                <div
-      style={{
-        width: "100vw",
-        height: "600px"
-      }}>
+                <NavBar />
 
                 <div className="dropdown">
-                    <button style={divStyle} className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Find Your Pet Place: {this.state.name}</button>
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Store")} >Pet Store</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Animal Shelter")} >Animal Shelter</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Service")} >Pet Service</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Café")} >Pet Café</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Dog Run")} >Dog Run</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Veterinarian")} >Veterinarian</li>
-                        <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Park")} >Park</li>
-                    </ul>
-                    <div><br /></div>
-                    <SearchLocationInput
-                        type="text"
-                        className=""
-                        placeholder="Type the city to search for pet places"
-                        setStateNear={this.setStateNear}
-                    />
-                    <div><br /></div>
-                </div>
-                <div id="map"></div>
-            </div>
-            </div>
+                    <div className="row">
+                        <div className="col-md-3"></div>
+                        <div className="col-md-6">
+                            <button 
+                            style={divStyle}
+                            className="btn btn-secondary dropdown-toggle"
+                            type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                                Find Your Pet Place: {this.state.name}</button>
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Store")} >Pet Store</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Animal Shelter")} >Animal Shelter</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Service")} >Pet Service</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Pet Café")} >Pet Café</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Dog Run")} >Dog Run</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Veterinarian")} >Veterinarian</li>
+                                <li className="dropdown-item" cursor="pointer" onClick={() => this.handleDropDownChange("Park")} >Park</li>
+                            </ul>
+                            <div><br /></div>
+                            <SearchLocationInput
+                                type="text"
+                                className=""
+                                placeholder="Type the city to search for pet places"
+                                setStateNear={this.setStateNear}
+                            />
+                            <div><br /></div>
+                            </div>
+                            <div className="col-md-3"></div>
+                            </div>
+                        </div>
+                        <div
+                            style={{
+                                width: "100vw",
+                                height: "600px"
+                            }}>
+                            <div id="map"></div>
+                        </div>
+                    </div>
         )
     }
 }

@@ -57,6 +57,7 @@ function SearchLocationInput(props) {
     marginTop: "1vh",
     marginBottom: "3vh",
     marginLeft: "30px",
+    width: "80%"
     
   };
   return (

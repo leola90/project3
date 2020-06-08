@@ -1,13 +1,17 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
+
 function PetDetail(props) {
   return (
     <div>
-    <Card style={{ width: '18rem' }}>
+      <div className="row">
+       <div className="col-md-3"></div>
+       <div className="col-md-6">
+    <Card style={{ width: '50vw' }}>
       <Card.Img variant="top" alt={props.name} src={props.image}  />  
       {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
       <Card.Body>
@@ -26,6 +30,10 @@ function PetDetail(props) {
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
+    <div><br /><br /></div>
+    </div>
+        <div className="col-md-3"></div>
+        </div>
     </div>
   );
 }

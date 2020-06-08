@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 
 
+
 class Register extends Component {
 
     state = {
@@ -38,6 +39,7 @@ class Register extends Component {
          
         return(
          <div>
+           
           <form className="form">
           <input
             value={this.state.name}
