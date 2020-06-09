@@ -48,11 +48,13 @@ class Login extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3"></div>
-                        <div className="col-md-6" style={{ backgroundColor: "whitesmoke" }} >
+                        <div className="col-md-6" style={{ backgroundColor: "whitesmoke", padding:"3%" }} >
                          {/* <img className="centralize" src="" className="logo" alt="Logo" /> */}
                             <h1 style={{ textAlign: "center" }}>   Welcome to Pet Buddy</h1>
-                          <h3 style={{ textAlign: "center" }}>Find your pet buddy today.</h3>
-                            <h3 style={{ textAlign: "center" }}>Login & have fun!</h3>
+                            <br />
+                          <h4 style={{ textAlign: "center" }}>The Only Social Network for Pet Owners and Pet Enthusiasts!</h4>
+                          <br />
+                            <h4 style={{ textAlign: "center" }}>Login & have fun!</h4>
                             <br />
                                  <br />
                             <form className="form form-group" style={{textAlign: "center",   display: "inlineBlock"}}>

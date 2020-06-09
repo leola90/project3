@@ -98,7 +98,7 @@ class Places extends Component {
                     this.setState({
                         venues: response.data.response.groups[0].items
                     }, this.renderMap())
-                    // console.log(response.data.response.groups[0].items)
+                    console.log(response.data.response.groups[0].items)
                 })
                 .catch(error => {
                     console.log("error: " + error)
@@ -149,11 +149,11 @@ class Places extends Component {
                 }
             });
             var infowindow = new window.google.maps.InfoWindow();
-
+         
             this.state.venues.map(place => {
 
                 var contentString = `${place.venue.name} <br /> ${place.venue.location.address}`;
-
+               
                 var marker = new window.google.maps.Marker({
                     position: { lat: place.venue.location.lat, lng: place.venue.location.lng },
                     map: map,

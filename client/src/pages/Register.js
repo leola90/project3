@@ -57,12 +57,13 @@ class Register extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3"></div>
-                        <div className="col-md-6" style={{ backgroundColor: "whitesmoke" }} >
+                        <div className="col-md-6" style={{ backgroundColor: "whitesmoke", padding:"3%" }} >
                             {/* <img className="centralize" src="" className="logo" alt="Logo" /> */}
-                            <h1 style={{ textAlign: "center" }}>   Welcome to Pet Buddy</h1>
-                            <h3 style={{ textAlign: "center" }}>Find your pet buddy today.</h3>
-                            <h3 style={{ textAlign: "center" }}>Sign Up Now & Have Fun!</h3>
+                            <h1 style={{ textAlign: "center" }}> Welcome to Pet Buddy</h1>
                             <br />
+                            <h4 style={{ textAlign: "center" }}>The Only Social Network for Pet Owners and Pet Enthusiasts!</h4>
+                            <br />
+                            <h4 style={{ textAlign: "center" }}>Sign Up Now & Have Fun!</h4>
                             <br />
                             <form className="form form-group" style={{ textAlign: "center", display: "inlineBlock" }}>
                                 <form className="form">
@@ -106,7 +107,7 @@ class Register extends Component {
                                         className="btn btn-success"
                                         style={{ width: "50%" }}
                                     >
-                                        Submit</button>
+                                        Sign-Up</button>
                                 </form>
                             </form>
                             <br />
@@ -116,39 +117,6 @@ class Register extends Component {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-            // <div>
-            //     <h1>This is the Register Page</h1>
-            //     <form className="form">
-            //         <input
-            //             value={this.state.username}
-            //             name="username"
-            //             onChange={this.handleInputChange}
-            //             type="text"
-            //             placeholder="username"
-            //         />
-            //         <input
-            //             value={this.state.email}
-            //             name="email"
-            //             onChange={this.handleInputChange}
-            //             type="text"
-            //             placeholder="email"
-            //         />
-            //         <input
-            //             value={this.state.password}
-            //             name="password"
-            //             onChange={this.handleInputChange}
-            //             type="password"
-            //             placeholder="Password"
-            //         />
-            //         <button onClick={this.handleFormSubmit}>Submit</button>
-            //     </form>
-            // </div>
         )
     }
 }
