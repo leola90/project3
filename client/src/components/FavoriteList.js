@@ -1,19 +1,17 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+ 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Col  from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
-function PetDetail(props) {
+function FavoriteList(props) {
   return (
     <div>
       <Container>
         <Row>
-          <Col> 
-          <button onClick={props.likeButton} className="btn btn-success">Like</button>
-          </Col>
+          <Col></Col>
           <Col>
             <Card >
               <Card.Img alt={props.name} style={{ width: "100%" }} src={props.image} />
@@ -25,13 +23,11 @@ function PetDetail(props) {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
-          {/* <button onClick={props.likeButton} className="btn btn-danger">Dislike</button> */}
-          </Col>
+          <Col></Col>
         </Row>
       </Container>
     </div>
   );
 }
 
-export default PetDetail;
+export default FavoriteList;

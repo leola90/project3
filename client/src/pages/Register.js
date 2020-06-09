@@ -25,7 +25,7 @@ class Register extends Component {
         const { username, email, password} = this.state;
 
         axios({
-           url: "/auth/signup",
+           url: "/api/users/signup",
            method: "POST",
            data: {
                username,

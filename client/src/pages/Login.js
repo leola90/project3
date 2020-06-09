@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import  {Redirect} from "react-router-dom";
+
 class Login extends Component {
     state = {
         email: "",
@@ -24,7 +25,7 @@ class Login extends Component {
         const { email, password} = this.state;
 
         axios({
-           url: "/auth/login",
+           url: "/api/users/login",
            method: "POST",
            data: {
                email,

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PetDetail from "./PetDetail";
 import axios from "axios";
-import API from "../utils/API";
 
 
 class PetContainer extends Component {
@@ -14,11 +13,6 @@ class PetContainer extends Component {
 
   // When this component mounts
   componentDidMount() {
-    this.getData();
-
-  }
-
-  getData() {
     let currentComponent = this;
     var key = 'igsm09LNIk7zw9Jus9SCp442VlrhlrCKzISwqh2q4jjMsgowpt';
     var secret = '4jDSTVvRCNOvwP7gMGgr85a6FQzFl9XeBJ2sKBmJ';
@@ -35,41 +29,44 @@ class PetContainer extends Component {
       // console.log(data.access_token)
       const token = data.access_token;
       //localhost is 3000 by default
-      axios.defaults.baseURL = "http://localhost:5000/";
-      axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
-      // axios.get("https://api.petfinder.com/v2/animals")
-      API.getfunction()
+      // axios.defaults.baseURL = "http://localhost:3000/";
+      // axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
+      axios.get("https://api.petfinder.com/v2/animals", { headers: { 'Authorization': `Bearer ${token}` } })
         .then(res => {
           console.log(res)
           const results = res.data.animals;
-          currentComponent.setState({ results })
+          // this.setState({ results }); //changed this reference
+          currentComponent.setState({
+            results
+          })
         })
         .catch(err => console.log(err));
     }).catch(function (err) {
       console.log('something went wrong', err);
     });
-  };
-
+  }
 
   likeButton(result) {
-    console.log(result);
-    console.log("first checkpoint");
-    const data = {
+    // console.log(result);
+
+    const payload = {
       name: result.name,
       gender: result.gender,
       status: result.status,
-      image: result.image
+      image: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"
     }
-    console.log(data)
-    API.savePost({
-      name: result.name
-    })
-      .then(result => {
-        console.log("third checkpoint");
-      })
-      .catch(err => console.log(err));
 
-    this.getData();
+    console.log(payload);
+
+    axios({
+      url: "/api/posts",
+      method: "POST",
+      data: payload
+    })
+      .then(res => {
+        console.log(res);
+      })
+
   };
 
   render() {
