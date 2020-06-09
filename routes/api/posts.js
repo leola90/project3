@@ -1,18 +1,28 @@
 const router = require("express").Router();
-const postsController = require("../../controllers/postsController");
+const Post = require ("../../models/Posts");
 
-// Matches with "/api/posts"
-router
-  .route("/posts")
-  .get(postsController.findAll)
-  .post(postsController.create);
-  console.log("second checkpoint")
+//@route GET api/user
+router.get('/', (req,res) => {
+  Post.find()
+    .sort({ date: -1})
+    .then(posts => res.json(posts))
+})
 
-// Matches with "/api/posts/:id"
-router
-  .route("/:id")
-  .get(postsController.findById)
-  .put(postsController.update)
-  .delete(postsController.remove);
+router.post('/', (req,res) => {
+  const newPost = new Post({
+    name: req.body.name,
+    gender: req.body.gender,
+    status: req.body.status,
+    image: req.body.image
+  });
+
+  newPost.save().then(post => res.json(post));
+})
+
+router.delete('/:id', (req,res) => {
+  Post.findById(req.params.id)
+  .then(post => post.remove().then(() => res.json({ success: true })))
+  .catch(err => res.status(404).json({ success: false}));
+})
 
 module.exports = router;

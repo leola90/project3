@@ -6,8 +6,7 @@ const PostSchema = new Schema({
   image: { type: String},
   gender: { type: String},
   status: { type: String},
-  date: { type: Date, 
-    default: Date.now }
+  date: { type: Date, default: Date.now }
 });
 
 const Post = mongoose.model("Post", PostSchema);

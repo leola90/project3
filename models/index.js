@@ -1,4 +1,4 @@
 module.exports = {
-    User: require("./users"),
-    Post: require("./post")
+    User: require("./Users"),
+    Post: require("./Post")
 };
