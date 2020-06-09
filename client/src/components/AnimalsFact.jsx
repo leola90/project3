@@ -190,15 +190,13 @@ class AnimalsFact extends React.Component {
         </div>
 
       )
-
     }
 
     var divStyle = {
       marginTop: "1vh",
       marginBottom: "3vh",
       marginLeft: "30px",
-      width: "80%"
-
+      marginRight:"1%"
     };
 
     return (
@@ -216,9 +214,9 @@ class AnimalsFact extends React.Component {
               <input
                 type="text"
                 value={this.state.searchTerm || ''}
-                id="btn"
+                // id="btn"
                 onChange={this.changeSearchTerms}
-                className="animalFacts"
+                className="animalFacts search-location-input"
                 style={divStyle}
               >
               </input>
@@ -226,6 +224,8 @@ class AnimalsFact extends React.Component {
               <button
                 type="submit"
                 onClick={this.handleSearchButton}
+                className="btn btn-secondary"
+                style={{width:"10vw"}}
               >Search
           </button>
             </form>

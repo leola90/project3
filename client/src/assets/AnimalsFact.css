@@ -38,7 +38,7 @@
   }
 
   .animalFacts {
-    width: 100%;
+    /* width: 90%; */
     border: 1px solid grey;
     box-shadow: 0 0 0 1px #888888, 0 2 4 1px  #888888;
     font-family: Arial, Helvetica, sans-serif;
@@ -46,15 +46,15 @@
     color: rgba (0 , 0 , 0 , 0.73);
 }
 
-/* .animalFacts input {
-    width: 100%;
+input {
+    width: 70%;
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: rgba (0 , 0 , 0 , 0.73);
-    padding: 10px, 5px;
+    /* padding: 10px, 5px; */
     box-sizing: border-box;
     outline: none;
     height: 40px;
-} */
+}
 

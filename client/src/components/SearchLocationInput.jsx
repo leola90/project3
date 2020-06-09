@@ -61,7 +61,7 @@ function SearchLocationInput(props) {
     
   };
   return (
-    <div style={divStyle} className="search-location-input autoCompleteText">
+    <div style={divStyle} className="input autoCompleteText">
       <input
         type={props.type}
         ref={autoCompleteRef}
