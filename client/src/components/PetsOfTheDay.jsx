@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PetDetail from "./PetDetail";
+import PetContainer from "./PetContainer";
 import axios from "axios";
 import NavBar from "./NavBar"
-// import DogIcon from "../assets//dog-icon.png"
+import DogIcon from "../assets/dog-icon.png"
 
-class PetContainer extends Component {
+class PetsOfTheDay extends Component {
   state = {
     results: [],
     search: ""
@@ -50,10 +50,10 @@ class PetContainer extends Component {
       <div>
         <NavBar />
         {this.state.results.map(result => (
-          <PetDetail
+          <PetContainer
             id={result.id}
             name={result.name}
-            src={ result.images}
+            src={ result.images? result.images: DogIcon }
             status={result.status}
             description={result.description}
             gender={result.gender}
@@ -68,4 +68,4 @@ class PetContainer extends Component {
 
 };
 
-export default PetContainer;
+export default PetsOfTheDay;
