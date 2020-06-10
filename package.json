@@ -1,38 +1,54 @@
 {
-  "name": "mern_petfinder",
-  "version": "1.0.0",
-  "description": "Petfinder app built with the MERN stack",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leola90/project3.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/leola90/project3/issues"
-  },
-  "homepage": "https://github.com/leola90/project3#readme",
+  "name": "pet-places",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "@react-google-maps/api": "^1.9.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
-    "concurrently": "^5.2.0",
-    "config": "^3.3.1",
-    "cookie-session": "^1.4.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.9.16",
+    "google-map-react": "^1.1.7",
+    "google-maps-react": "^2.0.6",
+    "google-places-web": "^1.0.1",
+    "mongoose": "^5.9.18",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-foursquare": "^1.0.3",
+    "react-google-maps": "^9.4.5",
+    "react-native-google-places-autocomplete": "^1.7.1",
+    "react-places-autocomplete": "^7.2.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
+    "@babel/preset-env": "^7.10.0"
   }
 }

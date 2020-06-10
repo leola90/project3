@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import PetDetail from "./PetDetail";
+import PetContainer from "./PetContainer";
 import axios from "axios";
+import NavBar from "./NavBar"
+import DogIcon from "../assets/dog-icon.png"
 
-class PetContainer extends Component {
+class PetsOfTheDay extends Component {
   state = {
     results: [],
     search: ""
@@ -26,9 +28,9 @@ class PetContainer extends Component {
       console.log(data.access_token)
       const token = data.access_token;
       //localhost is 3000 by default
-      axios.defaults.baseURL = "http://localhost:3000/";
-      axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
-      axios.get("https://api.petfinder.com/v2/animals")
+      // axios.defaults.baseURL = "http://localhost:3000/";
+      // axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
+      axios.get("https://api.petfinder.com/v2/animals", { headers:{'Authorization': `Bearer ${token}`} })
         .then(res => {
           console.log(res)
           const results = res.data.animals;
@@ -43,26 +45,27 @@ class PetContainer extends Component {
     });
   }
 
-
-
   render() {
     return (
       <div>
+        <NavBar />
         {this.state.results.map(result => (
-          <PetDetail
+          <PetContainer
             id={result.id}
             name={result.name}
-            src={result.photos}
+            src={ result.images? result.images: DogIcon }
             status={result.status}
             description={result.description}
             gender={result.gender}
             image={"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"}
+       
           />
         ))}
+    
       </div>
     )
   }
 
 };
 
-export default PetContainer;
+export default PetsOfTheDay;

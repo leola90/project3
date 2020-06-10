@@ -14,6 +14,7 @@
     "google-map-react": "^1.1.7",
     "google-maps-react": "^2.0.6",
     "google-places-web": "^1.0.1",
+    "materialize": "^1.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
