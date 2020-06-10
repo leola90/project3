@@ -44,5 +44,3 @@ function PetContainer(props) {
 
 export default PetContainer;
 
-
-
