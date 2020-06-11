@@ -57,10 +57,11 @@ function SearchLocationInput(props) {
     marginTop: "1vh",
     marginBottom: "3vh",
     marginLeft: "30px",
+    width: "80%"
     
   };
   return (
-    <div style={divStyle} className="search-location-input autoCompleteText">
+    <div style={divStyle} className="input autoCompleteText">
       <input
         type={props.type}
         ref={autoCompleteRef}
