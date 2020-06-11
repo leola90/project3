@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Post = require ("../../models/Posts");
+const Post = require ("../../models/Post");
 
 //@route GET api/user
 router.get('/', (req,res) => {
@@ -8,9 +8,11 @@ router.get('/', (req,res) => {
     .then(posts => res.json(posts))
 })
 
+//@route POST api
 router.post('/', (req,res) => {
   const newPost = new Post({
     name: req.body.name,
+    description: req.body.description,
     gender: req.body.gender,
     status: req.body.status,
     image: req.body.image
@@ -19,6 +21,7 @@ router.post('/', (req,res) => {
   newPost.save().then(post => res.json(post));
 })
 
+//@route DELETE api/user
 router.delete('/:id', (req,res) => {
   Post.findById(req.params.id)
   .then(post => post.remove().then(() => res.json({ success: true })))

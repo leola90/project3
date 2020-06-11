@@ -17,8 +17,8 @@ const SignupStrategy = new Strategy({ passReqToCallback: true}, function (req, u
 
         
         let newUser = new User({
-            email,
             username,
+            email,
             password: bcrypt.hashSync(password, salt)
             
         });
