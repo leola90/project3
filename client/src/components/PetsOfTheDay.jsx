@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import PetContainer from "./PetContainer";
 import axios from "axios";
 import NavBar from "./NavBar"
-import DogIcon from "../assets/dog-icon.png";
-import { Redirect } from "react-router-dom";
+import DogIcon from "../assets/dog-icon.png"
 
 class PetsOfTheDay extends Component {
   state = {
-    results: []
+    results: [],
+    search: ""
   };
-
   // When this component mounts
   componentDidMount() {
     let currentComponent = this;
@@ -27,57 +26,24 @@ class PetsOfTheDay extends Component {
       console.log('token', data);
       console.log(data.access_token)
       const token = data.access_token;
-      axios.get("https://api.petfinder.com/v2/animals", { headers: { 'Authorization': `Bearer ${token}` } })
+      //localhost is 3000 by default
+      // axios.defaults.baseURL = "http://localhost:3000/";
+      // axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
+      axios.get("https://api.petfinder.com/v2/animals", { headers:{'Authorization': `Bearer ${token}`} })
         .then(res => {
           console.log(res)
           const results = res.data.animals;
-          currentComponent.setState({ results })
+          // this.setState({ results }); //changed this reference
+          currentComponent.setState({
+            results
+          })
         })
         .catch(err => console.log(err));
     }).catch(function (err) {
       console.log('something went wrong', err);
     });
   }
-
-  likeButton(result) {
-    const payload = {
-      name: result.name,
-      description: result.description,
-      gender: result.gender,
-      status: result.status,
-      image: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"
-    }
-
-    console.log(payload);
-
-    axios({
-      url: "/api/posts",
-      method: "POST",
-      data: payload
-    })
-      .then(res => {
-        console.log(res);
-      })
-
-  };
-
-  // LOG OUT FUNCTION 
-  handleFormSubmit = event => {
-    axios.get("/api/users/logout")
-      .then(response => {
-        window.localStorage.clear();
-        this.props.history.push("./Login");
-      })
-      .catch(err => console.log(err));
-  }
-
   render() {
-    const isAuthenticated = window.localStorage.getItem("isAuthenticated");
-
-    if (!isAuthenticated) {
-      return <Redirect to="/login" />
-    };
-
     return (
       <div>
         <NavBar />
@@ -85,19 +51,16 @@ class PetsOfTheDay extends Component {
           <PetContainer
             id={result.id}
             name={result.name}
-            src={result.images ? result.images : DogIcon}
+            src={ result.images? result.images: DogIcon }
             status={result.status}
             description={result.description}
             gender={result.gender}
+            link={result.url}
             image={"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"}
-            likeButton={this.likeButton.bind(this, result)}
           />
         ))}
-
       </div>
     )
   }
-
 };
-
 export default PetsOfTheDay;

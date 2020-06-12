@@ -36,7 +36,7 @@ function PetDetail(props) {
                         <ListGroup className="list-group-flush">
                             <ListGroupItem>Gender: {props.gender}</ListGroupItem>
                             <ListGroupItem>Status: {props.status}</ListGroupItem>
-                            {/* <ListGroupItem>ID: {props.id}</ListGroupItem> */}
+                            <ListGroupItem>Link: {props.url}</ListGroupItem>
                         </ListGroup>
                         <Card.Body>
                             <Card.Link href="#">Like</Card.Link>

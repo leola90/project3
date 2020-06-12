@@ -9,7 +9,8 @@ const UserSchema = new Schema({
 
   email: {
     type: String,
-    require: true
+    require: true,
+    unique: true
   },
 
   password: {
@@ -20,7 +21,10 @@ const UserSchema = new Schema({
   register_date: {
     type: Date,
     default: Date.now
-  }
+  },
+
+  posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
+
 });
 
 const User = mongoose.model("User", UserSchema);

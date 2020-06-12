@@ -24,6 +24,7 @@ function App() {
         <Route exact path="/Facts" component={AnimalsFact} />
         <Route exact path="/Logout" component={Logout} />
       </div>
+  
     </Router>
   );
  

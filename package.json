@@ -1,5 +1,5 @@
 {
-  "name": "PBF",
+  "name": "pet-buddy-finder",
   "version": "1.0.0",
   "description": "An app for pet lovers",
   "main": "server.js",
@@ -23,7 +23,29 @@
     "mongoose": "^5.9.18",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-foursquare": "^1.0.3",
+    "react-google-maps": "^9.4.5",
+    "react-native-google-places-autocomplete": "^1.7.1",
+    "react-places-autocomplete": "^7.2.1",
+    "react-scripts": "3.4.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

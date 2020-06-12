@@ -2,9 +2,7 @@ import React, { Component } from "react"
 import "../assets/Places.css"
 import axios from "axios"
 import SearchLocationInput from "./SearchLocationInput"
-import NavBar from "./NavBar";
-import  {Redirect} from "react-router-dom"
-
+import NavBar from "./NavBar"
 class Places extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +14,6 @@ class Places extends Component {
             near: ""
         }
     }
-
     componentDidUpdate(prevProps, prevState) {
         console.log(prevState);
         console.log(this.state);
@@ -27,12 +24,9 @@ class Places extends Component {
             this.getVenues()
         }
     }
-
     componentDidMount() {
         this.getLocation()
-
     }
-
     getLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getCoordinates);
@@ -40,7 +34,6 @@ class Places extends Component {
             alert("Geolocation not supported by this browser")
         }
     }
-
     getCoordinates = (position) => {
         this.setState({
             currentLatitude: position.coords.latitude,
@@ -48,19 +41,16 @@ class Places extends Component {
         })
         this.getVenues()
     }
-
     renderMap = () => {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAkKwg820hYfSV54pK4oI_xDk5OARvZLO4&callback=initMap")
         window.initMap = this.initMap
     }
-
     setStateNear = (value) => {
         this.setState({
             near: value
         })
         console.log(this.state.near)
     }
-
     getVenues = () => {
         if (this.state.near === "") {
             const endPoint = "https://api.foursquare.com/v2/venues/explore?"
@@ -72,7 +62,6 @@ class Places extends Component {
                 ll: `${this.state.currentLatitude},${this.state.currentLongitude}`,
                 v: "20200528",
             }
-
             axios.get(endPoint + new URLSearchParams(parameters))
                 .then(response => {
                     this.setState({
@@ -83,7 +72,6 @@ class Places extends Component {
                     console.log("error: " + error)
                 })
         }
-
         else {
             const endPoint = "https://api.foursquare.com/v2/venues/explore?"
             const parameters = {
@@ -93,7 +81,6 @@ class Places extends Component {
                 near: this.state.near,
                 v: "20200528",
             }
-
             axios.get(endPoint + new URLSearchParams(parameters))
                 .then(response => {
                     this.setState({
@@ -106,27 +93,21 @@ class Places extends Component {
                 })
         }
     }
-
     initMap = () => {
         if (this.state.near === "") {
             var map = new window.google.maps.Map(document.getElementById('map'), {
                 center: { lat: this.state.currentLatitude, lng: this.state.currentLongitude },
                 zoom: 12
             });
-
             var infowindow = new window.google.maps.InfoWindow();
-
             this.state.venues.map(place => {
-
                 var contentString = `${place.venue.name} <br /> ${place.venue.location.address}`;
-
                 var marker = new window.google.maps.Marker({
                     position: { lat: place.venue.location.lat, lng: place.venue.location.lng },
                     map: map,
                     title: place.venue.name,
                     adress: place.venue.categories.name
                 });
-
                 marker.addListener('click', function () {
                     infowindow.setContent(contentString)
                     infowindow.open(map, marker);
@@ -136,12 +117,10 @@ class Places extends Component {
         else {
             var map;
             var geocoder = new window.google.maps.Geocoder();
-
             map = new window.google.maps.Map(document.getElementById('map'), {
                 center: { lat: 0, lng: 0 },
                 zoom: 12
             });
-
             geocoder.geocode({ 'address': this.state.near }, function (results, status) {
                 if (status === 'OK') {
                     map.setCenter(results[0].geometry.location);
@@ -150,40 +129,27 @@ class Places extends Component {
                 }
             });
             var infowindow = new window.google.maps.InfoWindow();
-         
             this.state.venues.map(place => {
-
                 var contentString = `${place.venue.name} <br /> ${place.venue.location.address}`;
-               
                 var marker = new window.google.maps.Marker({
                     position: { lat: place.venue.location.lat, lng: place.venue.location.lng },
                     map: map,
                     title: place.venue.name,
                     adress: place.venue.categories.name
                 });
-
                 marker.addListener('click', function () {
                     infowindow.setContent(contentString)
                     infowindow.open(map, marker);
                 });
             })
-
         }
     }
-
     handleDropDownChange = name => {
         this.setState({
             name: name
         });
     };
-
     render() {
-        const isAuthenticated = window.localStorage.getItem("isAuthenticated");
-
-        if (!isAuthenticated) {
-            return <Redirect to = "/login" />
-        };
-
         var divStyle = {
             marginTop: "3vh",
             marginLeft: "30px",
@@ -192,7 +158,6 @@ class Places extends Component {
         return (
             <div>
                 <NavBar />
-
                 <div className="dropdown">
                     <div className="row">
                         <div className="col-md-3"></div>
@@ -237,7 +202,6 @@ class Places extends Component {
         )
     }
 }
-
 function loadScript(url) {
     var index = window.document.getElementsByTagName("script")[0]
     var script = window.document.createElement("script")
@@ -246,5 +210,4 @@ function loadScript(url) {
     script.defer = true
     index.parentNode.insertBefore(script, index)
 }
-
 export default Places;
