@@ -5,6 +5,7 @@ const passport = require("./passport");
 const routes = require("./routes");
 const logger = require("morgan");
 const cookieSession = require("cookie-session");
+const path = require("path");
 
 const app = express();
 
@@ -32,12 +33,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Add routes, both API and view
+app.use(routes);
+
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-// Add routes, both API and view
-app.use(routes);
 
 const PORT = process.env.PORT || 3001;
 
