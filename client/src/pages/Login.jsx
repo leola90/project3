@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import  {Redirect} from "react-router-dom";
 
 class Login extends Component {
     state = {
@@ -24,7 +25,7 @@ class Login extends Component {
         const { email, password } = this.state;
 
         axios({
-            url: "/auth/login",
+            url: "/api/users/login",
             method: "POST",
             data: {
                 email,
@@ -32,7 +33,9 @@ class Login extends Component {
             }
         })
             .then(response => {
-                this.props.history.push("./App");
+                const isAuthenticated = response.data.isAuthenticated;
+                window.localStorage.setItem("isAuthenticated", isAuthenticated);
+                this.props.history.push("./PetsOfTheDay");
             })
 
         this.setState({
@@ -42,6 +45,11 @@ class Login extends Component {
     }
 
     render() {
+        const isAuthenticated = window.localStorage.getItem("isAuthenticated");
+
+        if (isAuthenticated) {
+            return <Redirect to = "/PetsOfTheDay" />
+        };
         return (
             <div>
                 <div><br/>    <br />    <br /></div>

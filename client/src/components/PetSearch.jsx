@@ -3,9 +3,7 @@ import PetDetail from "./PetDetail";
 import axios from "axios";
 import NavBar from "../components/NavBar"
 import "../assets/PetDetail.css"
-
 class PetSearch extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -13,9 +11,7 @@ class PetSearch extends Component {
             search: ""
         };
     }
-
     performSearch(searchTerm) {
-
         let currentComponent = this;
         var key = 'igsm09LNIk7zw9Jus9SCp442VlrhlrCKzISwqh2q4jjMsgowpt';
         var secret = '4jDSTVvRCNOvwP7gMGgr85a6FQzFl9XeBJ2sKBmJ';
@@ -48,7 +44,6 @@ class PetSearch extends Component {
             console.log('something went wrong', err);
         });
     }
-
     performSearch1(searchTerm) {
         let currentComponent = this;
         var key = 'igsm09LNIk7zw9Jus9SCp442VlrhlrCKzISwqh2q4jjMsgowpt';
@@ -65,12 +60,10 @@ class PetSearch extends Component {
             console.log('token', data);
             console.log(data.access_token)
             const token = data.access_token;
-            //localhost is 3000 by default
-            axios.defaults.baseURL = "http://localhost:3000/";
-            axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
-            axios.get("https://api.petfinder.com/v2/animals?location=" + searchTerm + "&limit=100")
+            axios.get("https://api.petfinder.com/v2/animals?location=" + searchTerm + "&limit=100", { headers:{'Authorization': `Bearer ${token}`} })
                 .then(res => {
                     console.log(res)
+                    console.log(res.url)
                     const results = res.data.animals;
                     // this.setState({ results }); //changed this reference
                     currentComponent.setState({
@@ -82,21 +75,18 @@ class PetSearch extends Component {
             console.log('something went wrong', err);
         });
     }
-
     searchChangeHandler(event) {
         console.log(event.target.value)
         const boundObject = this
         const searchTerm = event.target.value
         boundObject.performSearch(searchTerm)
     }
-
     searchChangeHandler1(event) {
         console.log(event.target.value)
         const boundObject = this
         const searchTerm = event.target.value
         boundObject.performSearch1(searchTerm)
     }
-
     render() {
         return (
             <div>
@@ -110,7 +100,6 @@ class PetSearch extends Component {
                         </div>
                         <br />
                         <input
-
                             style={{
                                 fontSize: 24,
                                 fontFamily: "Arial, Helvetica, sans-serif",
@@ -132,7 +121,6 @@ class PetSearch extends Component {
                             onChange={this.searchChangeHandler1.bind(this)} placeholder="Animal Location by Zip Code..."
                             className="input petDetailInput"
                         />
-
                     </div>
                     <div className="col-md-3"></div>
                 </div>
@@ -150,10 +138,10 @@ class PetSearch extends Component {
                             type={result.type}
                             age={result.age}
                             breeds={result.breeds}
+                            link={result.url}
                             image={"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"}
                         // // trying to render multiple images - not working, reverting to previous
                         // image={result.photos.map(result => ( console.log(result.medium)))}
-
                         />
                     ))}
                 </div>
@@ -161,5 +149,4 @@ class PetSearch extends Component {
         );
     }
 }
-
 export default PetSearch;

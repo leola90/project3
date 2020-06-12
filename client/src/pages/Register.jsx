@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import NavBar from "../components/NavBar"
+// import  {Redirect} from "react-router-dom";
 
 class Register extends Component {
     state = {
@@ -26,7 +26,7 @@ class Register extends Component {
         const { username, email, password } = this.state;
 
         axios({
-            url: "/auth/signup",
+            url: "/api/users/signup",
             method: "POST",
             data: {
                 username,
@@ -35,12 +35,12 @@ class Register extends Component {
             }
         })
             .then(res => {
-                this.props.history.push("./App");
+                this.props.history.push("./PetsOfTheDay");
             })
             .catch(err => {
                 console.log(err.data)
             });
-
+        
         this.setState({
             username: "",
             email: "",
@@ -49,9 +49,8 @@ class Register extends Component {
     }
 
     render() {
+      
         return (
-
-
             <div>
                 <div><br />    <br />    <br /></div>
                 <div className="container">
@@ -74,7 +73,7 @@ class Register extends Component {
                                         name="username"
                                         onChange={this.handleInputChange}
                                         type="text"
-                                        placeholder="username"
+                                        placeholder="name"
                                         className="form-control-lg"
                                         style={{ width: "90%" }}
                                     />

@@ -9,7 +9,6 @@ class PetsOfTheDay extends Component {
     results: [],
     search: ""
   };
-
   // When this component mounts
   componentDidMount() {
     let currentComponent = this;
@@ -44,7 +43,6 @@ class PetsOfTheDay extends Component {
       console.log('something went wrong', err);
     });
   }
-
   render() {
     return (
       <div>
@@ -57,15 +55,12 @@ class PetsOfTheDay extends Component {
             status={result.status}
             description={result.description}
             gender={result.gender}
+            link={result.url}
             image={"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"}
-       
           />
         ))}
-    
       </div>
     )
   }
-
 };
-
 export default PetsOfTheDay;

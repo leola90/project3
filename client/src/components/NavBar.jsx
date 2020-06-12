@@ -1,29 +1,28 @@
 import React from "react"
-// import Button from 'react-bootstrap/Button';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar'
 // import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
 // import Form from 'react-bootstrap/Form'
 // import FormControl from 'react-bootstrap/FormControl'
 import { Link } from "react-router-dom";
+import { PromiseProvider } from "mongoose";
 
 const NavBar = () => {
 
     return (
 
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand as ={Link} to={"/Member"}>Pet Buddy</Navbar.Brand>
+            <Navbar.Brand as={Link} to={"/Favorite"}>Pet Buddy</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link as ={Link} to={"/Member"}>Your Profile</Nav.Link>
-                    <Nav.Link as ={Link} to={"/PetsOfTheDay"}>Pets of the Day!</Nav.Link>
-                    <Nav.Link as ={Link} to={"/PetSearch"}>PetSearch</Nav.Link>
-                    <Nav.Link as ={Link} to={"/Places"}>Places</Nav.Link>
-                    <Nav.Link as ={Link} to={"/Facts"}>Pet Facts</Nav.Link>
-                 
-                    <Nav.Link as ={Link} to={"/"}>Log Out</Nav.Link>
+                    <Nav.Link as={Link} to={"/Favorite"}>Favorites</Nav.Link>
+                    <Nav.Link as={Link} to={"/PetsOfTheDay"}>Pets of the Day!</Nav.Link>
+                    <Nav.Link as={Link} to={"/PetSearch"}>PetSearch</Nav.Link>
+                    <Nav.Link as={Link} to={"/Places"}>Places</Nav.Link>
+                    <Nav.Link as={Link} to={"/Facts"}>Pet Facts</Nav.Link>
+
+                    <Nav.Link as={Link} to={"/Logout"}>Log Out </Nav.Link>
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

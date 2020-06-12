@@ -1,34 +1,39 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const path = require("path");
-const logger = require('morgan');
+// const bodyParser = require("body-parser");
 const passport = require("./passport");
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/api/users");
+const routes = require("./routes");
+const logger = require("morgan");
+const cookieSession = require("cookie-session");
 
 const app = express();
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
+// Bodyparse Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(logger('dev'));
 
+// CookieSession
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+  }))
+
+// Passport Serialize and deserialize
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect to the Mongo DB
-mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/petfinderdb")
-  .then(() => console.log("MongoDB Connected..."))
-  .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/petdb")
+.then(() => console.log("MongoDB Connected..."))
+.catch(err => console.log(err));
 
-app.use("/", indexRouter);
-app.use("/auth", usersRouter);
-app.use(passport.initialize());
-// app.use(passport.session());
+// Add routes, both API and view
+app.use(routes);
 
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 // Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+app.listen(PORT, function () {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-

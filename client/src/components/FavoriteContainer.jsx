@@ -1,11 +1,11 @@
 import React from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import "../assets/PetDetail.css"
 import DogIcon from "../assets/dog-icon.png"
-function PetContainer(props) {
+
+function FavoriteContainer(props) {
   return (
     <div>
       <div className="row">
@@ -26,11 +26,10 @@ function PetContainer(props) {
       <ListGroup className="list-group-flush">
         <ListGroupItem>Gender: {props.gender}</ListGroupItem>
         <ListGroupItem>Status: {props.status}</ListGroupItem>
-        <ListGroupItem>Link: {props.link}</ListGroupItem>
+        <ListGroupItem>Link: {props.url}</ListGroupItem>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">Like</Card.Link>
-        <Card.Link href="#">Delete</Card.Link>
+      <button onClick={() => props.deleteButton(props.id)} className="btn btn-danger">Delete</button>
       </Card.Body>
     </Card>
     <div><br /><br /></div>
@@ -40,4 +39,5 @@ function PetContainer(props) {
     </div>
   );
 }
-export default PetContainer;
+
+export default FavoriteContainer;

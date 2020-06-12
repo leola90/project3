@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from "./NavBar"
 import "../assets/AnimalsFact.css"
+import  {Redirect} from "react-router-dom";
 // import "../assets/AutoCompleteText.css"
 
 var animalsArray = [
@@ -31,9 +32,6 @@ var animalsArray = [
 
 var randomItems = animalsArray[Math.floor(Math.random() * animalsArray.length)];
 console.log(randomItems);
-
-
-
 
 class AnimalsFact extends React.Component {
   constructor(props) {
@@ -149,6 +147,12 @@ class AnimalsFact extends React.Component {
   }
 
   render() {
+    const isAuthenticated = window.localStorage.getItem("isAuthenticated");
+
+    if (!isAuthenticated) {
+        return <Redirect to = "/login" />
+    };
+
     console.log('render run')
 
     let searchResults = [];

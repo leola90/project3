@@ -2,7 +2,7 @@
   "name": "pet-buddy-finder",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@react-google-maps/api": "^1.9.2",
