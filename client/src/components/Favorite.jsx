@@ -14,15 +14,16 @@ class Favorite extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/posts")
-        .then(res => {
-            console.log(res);
-            const results = res.data;
-            console.log(results)
-            this.setState({ results })
-            this.getData();
-        })
-        .catch(err => console.log(err))
+        axios.get("/api/users/posts")
+        // axios.get("/api/posts")
+        // .then(res => {
+        //     console.log(res);
+        //     const results = res.data;
+        //     console.log(results)
+        //     this.setState({ results })
+        //     this.getData();
+        // })
+        // .catch(err => console.log(err))
     }
 
     deleteButton = id => {

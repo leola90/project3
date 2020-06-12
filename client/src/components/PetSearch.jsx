@@ -32,9 +32,6 @@ class PetSearch extends Component {
             console.log('token', data);
             console.log(data.access_token)
             const token = data.access_token;
-            //localhost is 3000 by default
-            // axios.defaults.baseURL = "http://localhost:3000/";
-            // axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
             axios.get("https://api.petfinder.com/v2/animals?type=" + searchTerm + "&limit=100", { headers:{'Authorization': `Bearer ${token}`} })
                 .then(res => {
                     console.log(res)
