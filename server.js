@@ -28,6 +28,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/petdb")
 .then(() => console.log("MongoDB Connected..."))
 .catch(err => console.log(err));
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 // Add routes, both API and view
 app.use(routes);
 
