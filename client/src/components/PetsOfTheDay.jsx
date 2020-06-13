@@ -3,11 +3,11 @@ import PetContainer from "./PetContainer";
 import axios from "axios";
 import NavBar from "./NavBar"
 import DogIcon from "../assets/dog-icon.png"
+import { Redirect } from "react-router-dom"
 
 class PetsOfTheDay extends Component {
   state = {
-    results: [],
-    search: ""
+    results: []
   };
   // When this component mounts
   componentDidMount() {
@@ -43,7 +43,35 @@ class PetsOfTheDay extends Component {
       console.log('something went wrong', err);
     });
   }
+
+  likeButton(result) {
+    const payload = {
+      name: result.name,
+      description: result.description,
+      gender: result.gender,
+      status: result.status,
+      image: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/" + result.id + "/1/?"
+    }
+
+    //console.log(payload);
+
+    axios({
+      url: "/api/posts",
+      method: "POST",
+      data: payload
+    })
+      .then(res => {
+        console.log(res);
+      })
+
+  };
+
   render() {
+    const isAuthenticated = window.localStorage.getItem("isAuthenticated");
+
+    if (!isAuthenticated) {
+      return <Redirect to="/login" />
+    };
     return (
       <div>
         <NavBar />

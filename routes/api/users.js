@@ -13,16 +13,6 @@ router.delete('/:id', (req,res) => {
   .catch(err => res.status(404).json({ success: false}));
 })
 
-router.get('/posts', function (req, res) {
-  User
-    .find(req.query)
-    .sort({ data: -1})
-    .then()
-  
-  
-});
-
-
 
 //Post route for signup
 router.post('/signup', (req, res, next) => {

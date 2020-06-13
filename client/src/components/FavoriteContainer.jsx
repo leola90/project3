@@ -16,6 +16,7 @@ function FavoriteContainer(props) {
             </div> */}
     <Card className="cardWidth">
       <Card.Img variant="top" alt={props.name} src={props.image} onError={(e)=>{e.target.onerror = null; e.target.src=DogIcon}} />  
+      
       {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
       <Card.Body>
         <Card.Title>Description</Card.Title>
